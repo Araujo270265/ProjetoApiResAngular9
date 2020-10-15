@@ -1,0 +1,40 @@
+package br.com.marinha.apiativos.service;
+
+import java.util.List;
+import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+import br.com.marinha.apiativos.model.militaresAtivo;
+import br.com.marinha.apiativos.repository.MilitarAtivoRepository;
+
+@RestController
+@RequestMapping({"/api"})
+public class MilitarAtivoServico {
+	
+	@Autowired
+	private MilitarAtivoRepository _militarativoRepository;
+	
+	@RequestMapping(value = "/militarAtivo", method = RequestMethod.GET)
+    public List<militaresAtivo> Get() {
+        return _militarativoRepository.findAll();
+    }
+    
+    @RequestMapping(value = "/militarAtivo/{id}", method = RequestMethod.GET)
+    public ResponseEntity<militaresAtivo> GetById(@PathVariable(value = "id") long id)
+    {
+        Optional<militaresAtivo> militar = _militarativoRepository.findById(id);
+        if(militar.isPresent())
+            return new ResponseEntity<militaresAtivo>(militar.get(), HttpStatus.OK);
+        else
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+    
+    
+
+}

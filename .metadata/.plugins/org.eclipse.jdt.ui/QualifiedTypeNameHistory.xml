@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="javax.persistence.Entity"/>
+    <fullyQualifiedTypeName name="javax.persistence.Table"/>
+    <fullyQualifiedTypeName name="javax.persistence.Column"/>
+    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RestController"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="br.com.marinha.apiativos.repository.MilitarAtivoRepository"/>
+    <fullyQualifiedTypeName name="br.com.marinha.apiativos.model.militaresAtivo"/>
+    <fullyQualifiedTypeName name="java.time.LocalDateTime"/>
+    <fullyQualifiedTypeName name="java.security.Timestamp"/>
+    <fullyQualifiedTypeName name="java.sql.Timestamp"/>
+    <fullyQualifiedTypeName name="java.util.Optional"/>
+    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.Query"/>
+    <fullyQualifiedTypeName name="br.com.marinha.apiativos.repository.ProfissaoRepository"/>
+    <fullyQualifiedTypeName name="br.com.marinha.apiativos.model.profissao"/>
+    <fullyQualifiedTypeName name="org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMethod"/>
+    <fullyQualifiedTypeName name="com.google.common.net.HttpHeaders"/>
+    <fullyQualifiedTypeName name="io.swagger.models.auth.In"/>
+    <fullyQualifiedTypeName name="springfox.documentation.service.ApiKey"/>
+    <fullyQualifiedTypeName name="springfox.documentation.service.ApiInfo"/>
+    <fullyQualifiedTypeName name="springfox.documentation.builders.ApiInfoBuilder"/>
+    <fullyQualifiedTypeName name="io.swagger.models.Contact"/>
+    <fullyQualifiedTypeName name="springfox.documentation.spi.service.contexts.SecurityContext"/>
+    <fullyQualifiedTypeName name="io.swagger.annotations.AuthorizationScope"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="springfox.documentation.service.SecurityReference"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="springfox.documentation.service.VendorExtension"/>
+    <fullyQualifiedTypeName name="springfox.documentation.builders.PathSelectors"/>
+    <fullyQualifiedTypeName name="java.util.Arrays"/>
+    <fullyQualifiedTypeName name="io.swagger.annotations.Api"/>
+    <fullyQualifiedTypeName name="io.swagger.annotations.ApiOperation"/>
+    <fullyQualifiedTypeName name="io.swagger.annotations.ApiResponses"/>
+</qualifiedTypeNameHistroy>

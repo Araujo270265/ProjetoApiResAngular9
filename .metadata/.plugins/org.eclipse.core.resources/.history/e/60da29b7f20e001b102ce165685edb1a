@@ -1,0 +1,5 @@
+package br.com.marinha.apiativos.model;
+
+public class militaresAtivo {
+
+}

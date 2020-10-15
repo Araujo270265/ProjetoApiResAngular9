@@ -1,0 +1,101 @@
+package br.com.marinha.apiativos.service;
+
+import java.util.List;
+import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+import br.com.marinha.apiativos.model.profissao;
+import br.com.marinha.apiativos.repository.ProfissaoRepository;
+
+@RestController
+@RequestMapping({"/api"})
+public class profissaoServico {
+	
+	@Autowired
+	private ProfissaoRepository _profissaoRepository;
+	
+	@RequestMapping(value = "/profissaoAll", method = RequestMethod.GET)
+    public List<profissao> Get() {
+        return _profissaoRepository.findAll();
+    }
+    
+    @RequestMapping(value = "/profissao/{id}", method = RequestMethod.GET)
+    public ResponseEntity<profissao> GetById(@PathVariable(value = "id") long id)
+    {
+        Optional<profissao> militar = _profissaoRepository.findById(id);
+        if(militar.isPresent())
+            return new ResponseEntity<profissao>(militar.get(), HttpStatus.OK);
+        else
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+   }
+    
+    @RequestMapping(value = "/profissaoCPF/{cpf}", method = RequestMethod.GET)
+    public ResponseEntity<profissao> GetByCpf(@PathVariable(value = "cpf") String cpf)
+    {
+        Optional<profissao> profissao = _profissaoRepository.findUserByCpf(cpf);
+        if(profissao.isPresent())
+            return new ResponseEntity<profissao>(profissao.get(), HttpStatus.OK);
+        else
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+   }
+    
+    @RequestMapping(value = "/militarIdPessoal/{idpessoal}", method = RequestMethod.GET)
+    public ResponseEntity<profissao> GetByidPessoal(@PathVariable(value = "idpessoal") String idpessoal)
+    {
+        Optional<profissao> profissao = _profissaoRepository.findUserByidPessoal(idpessoal);
+        if(profissao.isPresent())
+            return new ResponseEntity<profissao>(profissao.get(), HttpStatus.OK);
+        else
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+   }
+    
+    
+    @RequestMapping(value = "/militarNomeEfetivo/{nome}/{efetivo}", method = RequestMethod.GET)
+    public List<profissao> GetByNome(@PathVariable(value = "nome") String nome, @PathVariable(value = "efetivo") String efetivo)
+    {
+        return _profissaoRepository.findUserByNome(nome, efetivo);
+   }
+    
+   @RequestMapping(value = "/saveMilitarAtivo", method =  RequestMethod.POST)
+    public militaresAtivo Post(@RequestBody militaresAtivo militar)
+    {
+        return _militarativoRepository.save(militar);
+    }
+    
+  @RequestMapping(value = "/alterarMilitarAtivo/{id}", method =  RequestMethod.PUT)
+    public ResponseEntity<militaresAtivo> Put(@PathVariable(value = "id") long id, @RequestBody militaresAtivo newmilitaresAtivo)
+    {
+        Optional<militaresAtivo> oldmilitaresAtivo = _militarativoRepository.findById(id);
+        if(oldmilitaresAtivo.isPresent()){
+        	militaresAtivo militar = oldmilitaresAtivo.get();
+        	newmilitaresAtivo.setCpf(newmilitaresAtivo.getCpf());
+        	newmilitaresAtivo.setIdPessoal(newmilitaresAtivo.getIdPessoal());
+        	newmilitaresAtivo.setNome(newmilitaresAtivo.getNome());
+            _militarativoRepository.save(newmilitaresAtivo);
+            return new ResponseEntity<militaresAtivo>(militar, HttpStatus.OK);
+        }
+        else
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+    
+    
+    @RequestMapping(value = "/deletarMilitarAtivo/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Object> Delete(@PathVariable(value = "id") long id)
+    {
+        Optional<militaresAtivo> militar = _militarativoRepository.findById(id);
+        if(militar.isPresent()){
+        	_militarativoRepository.delete(militar.get());
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+        else
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+    
+
+}
