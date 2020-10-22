@@ -1,0 +1,14 @@
+.box{
+	width:1920px;
+	height:70px;
+	background-color:ivory;
+    border-radius: 10px;
+    text-align: center;
+    color: maroon;
+    background-color: oldlace;
+	}/* You can add global styles to this file, and also import other style files */
+
+ .h1{
+     text-align: center;
+     
+ }

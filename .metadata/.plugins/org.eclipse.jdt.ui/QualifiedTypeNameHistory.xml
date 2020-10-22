@@ -35,4 +35,5 @@
     <fullyQualifiedTypeName name="io.swagger.annotations.Api"/>
     <fullyQualifiedTypeName name="io.swagger.annotations.ApiOperation"/>
     <fullyQualifiedTypeName name="io.swagger.annotations.ApiResponses"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.CrossOrigin"/>
 </qualifiedTypeNameHistroy>
