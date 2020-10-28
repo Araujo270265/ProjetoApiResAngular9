@@ -3,96 +3,76 @@
     <li class="breadcrumb-item active" aria-current="page">Gerenciamento de Militares Ativo</li>
   </ol>
 </nav>
-
-<div>
-  <form  id="add-form" #f="ngForm">
-    <fieldset>
-      <legend>Dados dos Militares</legend>
-      <div class="form-group">
-        <label for="cpf">Cpf: </label>
-        <input type="text"  id="cpf" name="cpf" required placeholder="Informe o CPF"  maxlength="11" class="form-control">
-      </div>
-      <div class="control-group">
-        <label for="idPessoal">Indentificação Pessoal: </label>
-        <input type="text" id="idPessoal" name="idPessoal" required placeholder="Informe a Indentificação" maxlength="10" class="form-control">
-      </div>
-      <div class="control-group">
-        <label for="efetivo">Efetivo</label>
-        <input type="text" id="efetivo" name="efetivo" required placeholder="Informe o efetivo" maxlength="3"class="form-control">
-      </div>
-      <div class="control-group">
-        <label for="nome">Nome do Militar</label>
-        <input type="text" id="nome" name="nome" required placeholder="Informe o nome" maxlength="100" class="form-control">
-      </div>
-      <div class="divBotton">
-        <button type="submit" class="btn btn-primary">Gravar</button>
-        <button type="reset" class="btn btn-primary" (click)="cleanForm(f)">Cancelar</button>
-      </div>
-    </fieldset>
-  </form>
-</div>
-<br>
-
-
 <div class="container">
   <div class="card list-car">
     <h5 class="card-header">Lista de Militares Atvo</h5>
     <br>
     <div class="form-group">
-      <label for="exampleInput" class="label">Informe o Nome do Militar</label>
-    </div>
-    <div class="divInput">
-      <input type="text" class="form-control" [(ngModel)]="nome" name="nome" id="nome" aria-describedby="emailHelp"
-        placeholder="nome do Militar">
+      <label for="exampleInput" class="label" >Informe o Nome do Militar</label>
+      </div> 
+      <div class="divInput">
+      <input type="text" class="form-control"  [(ngModel)]="nome" name="nome" id="nome" aria-describedby="emailHelp" placeholder="nome do Militar">
       <br>
-      <p>Selecione o tipo de Efetivo</p>
-      <div>
-        <input type="text" class="form-control" [(ngModel)]="efetivo" name="efetivo" id="efetivo"
-          aria-describedby="emailHelp" placeholder="Efetivo do Militar">
+      <!--button type="" class="btn btn-primary" (click)="addtext()" >Pesquisar</button>-->
+      <button type="" class="btn btn-primary" (click)="getCarByNome(nome)" >Pesquisar</button>
       </div>
-      <div class="divBotton">
-        <button type="" class="btn btn-primary" (click)="getCarByNome(nome, efetivo)">Pesquisar</button>
-      </div>
-    </div>
-
-
-  
-
-
-
-
+ 
     <div class="card-body">
       <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Id</th>
-            <th scope="col">CPF</th>
-            <th scope="col">IdPessoal</th>
-            <th scope="col">Nome do Militar</th>
-            <th scope="col">Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let mil of militares | paginate: { itemsPerPage: 10, currentPage: paginaAtual }; let i = index">
-            <td>{{mil.id}}</td>
-            <td>{{mil.cpf}}</td>
-            <td>{{mil.idPessoal}}</td>
-            <td>{{mil.nome}}</td>
-            <td>{{mil.efetivo}}</td>
-            <td>
-              <button type="button" class="btn btn-warning btn-sm" (click)="editMilitar(mil.id)">Editar</button>
-            </td>
-            <td>
-              <button type="button" class="btn btn-danger btn-sm ml-1" (click)="deleteMilitar(mil.id)">Deletar</button>
-            </td>
-          </tr>
-
-        </tbody>
-      </table>
-      <div class="pagina">
-        <pagination-controls (pageChange)="paginaAtual = $event" previousLabel="Anterior" nextLabel="Próximo">
-        </pagination-controls>
-      </div>
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">CPF</th>
+              <th scope="col">IdPessoal</th>
+              <th scope="col">Nome do Militar</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let mil of militares">
+              <td>{{mil.id}}</td>
+              <td>{{mil.cpf}}</td>
+              <td>{{mil.idPessoal}}</td>
+              <td>{{mil.nome}}</td>
+              <td>{{mil.efetivo}}</td>
+              <td>
+               <!--<button type="button" class="btn btn-warning btn-sm" (click)="editCar(car)">Editar</button>
+                <button type="button" class="btn btn-danger btn-sm ml-1" (click)="deleteCar(car)">Deletar</button>-->
+              </td>
+            </tr>
+          </tbody>
+        </table>
     </div>
   </div>
-</div>
+
+  <!--<div class="card add-car">
+      <h5 class="card-header">Adicionar/Atualizar carro</h5>
+      <div class="card-body">
+          <form id="add-form" (ngSubmit)="f.form.valid && saveCar(f)" #f="ngForm" novalidate>
+            <div class="form-group">
+                <label for="model">Modelo</label>
+                <input type="text" [(ngModel)]="car.model" id="model" name="model" #model="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && model.invalid }" placeholder="Digite o modelo">
+                <div *ngIf="f.submitted && model.invalid" class="invalid-feedback">
+                    <div *ngIf="model.errors.required">Modelo é obrigatório</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="color">Cor</label>
+                <input type="text" [(ngModel)]="car.color" id="color" name="color" #color="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && color.invalid }" placeholder="Digite a cor">
+                <div *ngIf="f.submitted && color.invalid" class="invalid-feedback">
+                    <div *ngIf="color.errors.required">Cor é obrigatória</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="price">Preço</label>
+                <input type="number" [(ngModel)]="car.price" id="price" name="price" #price="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && price.invalid }" placeholder="Digite o preço">
+                <div *ngIf="f.submitted && price.invalid" class="invalid-feedback">
+                    <div *ngIf="price.errors.required">Preço é obrigatório</div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-add-car">Salvar</button>
+            <button type="reset" class="btn btn-secondary btn-add-car" (click)="cleanForm(f)">Cancelar</button>
+          </form>
+      </div>
+    </div>
+</div>-->

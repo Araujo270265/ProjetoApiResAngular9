@@ -9,78 +9,11 @@
 }
 
 .divInput{
-    margin-left: 10px;
-    margin-right: 10px;
-    }
-
-.divBotton{
-    margin-left: 10px;
+    margin-left: 20px;
     margin-right: 20px;
-    margin-top: 10px;
-    float: left; 
-    border:1px solid; 
-    padding: 11px 10px ; 
-    vertical-align: middle; 
-    background:#2D888F; 
-    color:white;
-    border-radius:10px; 
-    font-size: 20px; 
-    font-family:helvetica, serif;
-    text-decoration:none;
 }
 
 .label{
     margin-left: 10px;
     font-weight: bold;
 }
-
-p{
-    font-weight: bold;
-}
-
-.select{
-    -webkit-appearance: none;  /* Remove estilo padrão do Chrome */
-    -moz-appearance: none; /* Remove estilo padrão do FireFox */
-    appearance: none; /* Remove estilo padrão do FireFox*/
-    background: url(http://www.webcis.com.br/images/imagens-noticias/select/ico-seta-appearance.gif) no-repeat #eeeeee;  /* Imagem de fundo (Seta) */
-    background-position: 218px center;  /*Posição da imagem do background*/
-    width: 250px; /* Tamanho do select, maior que o tamanho da div "div-select" */
-    height:30px; /* Altura do select, importante para que tenha a mesma altura em todo os navegadores */
-    border:1px solid #ddd;
- }
-
- 
-.pagina{
-    padding-top: 2px;
-    text-align: right;
-    border: 2px solid rgb(211, 211, 224);
-}
-
-td, th, tr, thead, tbody {
-   border: 2px solid rgb(211, 211, 224);
-}
-   
-
-input, label{
-    margin-left: 10px;
-}
-
-fieldset{
-    width: 60%;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 20px;
-    text-align: left;
-    margin-left: 360px;
-}
-
-legend{
-    background-color: #efefef;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 10px 20px;
-    text-align: left;
-    text-transform: uppercase;
-    font-weight: bold;
-}
-

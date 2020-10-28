@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { NgxPaginationModule } from 'ngx-pagination'; // Módulo da dependência de paginação
 
 @NgModule({
   declarations: [
@@ -18,8 +17,7 @@ import { NgxPaginationModule } from 'ngx-pagination'; // Módulo da dependência
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    FormsModule,
-    NgxPaginationModule // Nosso módulo recém instalado
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -17,13 +17,8 @@ export class ServiceMilitaresService {
 
   constructor(private httpClient: HttpClient) { }
 
-  // Headers
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  }
 
-
-  // Obtem todos os carros
+    // Obtem todos os carros
   getMilitarAll(): Observable<Militar[]> {
     return this.httpClient.get<Militar[]>(this.url + 'militarAtivo')
       .pipe(
@@ -31,40 +26,12 @@ export class ServiceMilitaresService {
         catchError(this.handleError))
   }
 
-  getCarByNome(nome: string, efetivo: string): Observable<Militar[]> {
-    return this.httpClient.get<Militar[]>(this.url + '/militarNomeEfetivo/' + nome + '/' + efetivo)
+   getCarByNome(nome: string):Observable<Militar[]> {
+    return this.httpClient.get<Militar[]>(this.url + '/militarNomeEfetivo/' + nome)
       .pipe(
         retry(2),
         catchError(this.handleError)
       )
-  }
-
-  // salva um carro
-  saveMilitar(mil: Militar): Observable<Militar> {
-    return this.httpClient.post<Militar>(this.url + '/saveMilitarAtivo/', JSON.stringify(mil), this.httpOptions)
-      .pipe(
-        retry(2),
-        catchError(this.handleError)
-      )
-  }
-
-  // utualiza um carro
-  updateMilitar(mil: Militar): Observable<Militar> {
-    return this.httpClient.put<Militar>(this.url + '/alterarMilitarAtivo/' + mil.id, JSON.stringify(mil), this.httpOptions)
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
-      )
-  }
-
-  // deleta um carro
-  deleteMilitar(mil: Militar) {
-    return this.httpClient.delete<Militar>(this.url + 'deletarMilitarAtivo/' + mil, this.httpOptions)
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
-      )
-    console.log(mil);
   }
 
   // Manipulação de erros
@@ -80,4 +47,6 @@ export class ServiceMilitaresService {
     console.log(errorMessage);
     return throwError(errorMessage);
   };
+    
+
 }
