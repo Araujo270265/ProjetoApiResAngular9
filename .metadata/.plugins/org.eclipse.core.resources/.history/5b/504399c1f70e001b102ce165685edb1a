@@ -1,5 +1,0 @@
-package br.com.marinha.apiativos.repository;
-
-public interface ProfissaoRepository {
-
-}

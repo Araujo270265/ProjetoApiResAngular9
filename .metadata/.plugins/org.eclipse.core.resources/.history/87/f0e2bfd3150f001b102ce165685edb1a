@@ -1,5 +1,0 @@
-package br.com.marinha.apiativos.configuration;
-
-public class Swagger2UiConfiguration {
-
-}

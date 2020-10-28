@@ -1,5 +1,0 @@
-package br.com.marinha.apiativos.service;
-
-public @interface Valid {
-
-}
